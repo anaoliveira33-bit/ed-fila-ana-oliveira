@@ -1,5 +1,5 @@
-from queue import Queue
-from process import Process
+from queue_model import Queue
+from process_model import Process
 
 queue = Queue()
 
@@ -10,3 +10,5 @@ def create_processes(quantity: int, queue: Queue):
     return queue
 
 create_processes(3, queue)
+
+print(queue)
