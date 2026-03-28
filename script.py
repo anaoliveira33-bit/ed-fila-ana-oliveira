@@ -12,3 +12,32 @@ def create_processes(quantity: int, queue: Queue):
 create_processes(3, queue)
 
 print(queue)
+
+def proccess_queues(queue: Queue, quantum: int):
+    process = queue.head
+    while process:
+        if not isinstance(process.data, Process):
+            process = process.next
+        if (process.data.remaining_time <= 0):
+            queue.dequeue()
+            process = process.next
+
+        finished = False
+
+        for _ in range(quantum):
+            process.data.remaining_time -=1
+            
+            if (process.data.remaining_time == 0):
+                queue.dequeue()
+                finished = True
+                break
+
+        if finished:
+            process = process.next
+            continue
+        
+        pending_process = process.data
+        queue.dequeue()
+        queue.enqueue(pending_process)
+
+proccess_queues(queue, 4)
