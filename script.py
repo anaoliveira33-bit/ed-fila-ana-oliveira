@@ -11,8 +11,6 @@ def create_processes(quantity: int, queue: Queue):
 
 create_processes(3, queue)
 
-print(queue)
-
 def proccess_queues(queue: Queue, quantum: int):
     process = queue.head
     while process:

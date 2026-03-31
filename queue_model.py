@@ -23,6 +23,8 @@ class Queue:
         if self._size > 0:
             elem  = self.head.data
             self.head = self.head.next
+            if self.head is None:
+                self.tail = None
             self._size = self._size - 1
             return elem
         raise IndexError("The queue is empty")
